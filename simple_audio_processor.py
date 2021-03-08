@@ -12,11 +12,11 @@ def execute(command, args):
 
     elif command == 'cut':
         with open(args.intervals) as intervals_file:
-            intervals = (map(timestamp_to_milliseconds, line.split(',')) for line in intervals_file.readlines())
+            intervals = (tuple(map(timestamp_to_milliseconds, line.split('-'))) for line in intervals_file.readlines())
             cut_audio_file(audio_file=args.audio_file, intervals=intervals)
 
     elif command == 'ts':
-        with open(args.stamps) as timestamps_file:
+        with open(args.timestamps) as timestamps_file:
             timestamps = map(timestamp_to_milliseconds, timestamps_file.readlines())
             break_up_audio_file_by_timestamps(audio_file=args.audio_file, timestamps=timestamps)
 

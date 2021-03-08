@@ -1,20 +1,19 @@
 import argparse
 import itertools
 import sys
-from typing import Iterable
 
 
-def pairwise(iterable: Iterable) -> Iterable:
+def pairwise(iterable):
     a, b = itertools.tee(iterable)
     next(b, None)
-    return zip(a, b)
+    return map(tuple, zip(a, b))
 
 
-def timestamp_to_milliseconds(timestamp: str) -> int:
+def timestamp_to_milliseconds(timestamp):
     try:
         return int(timestamp)
     except ValueError:
-        hours, minutes, seconds, milliseconds = [int(x) for x in timestamp.replace(',', ':').split(':')]
+        hours, minutes, seconds, milliseconds = map(int, timestamp.replace(',', ':').replace('.', ':').split(':'))
         return milliseconds + 1000 * (seconds + 60 * (minutes + 60 * hours))
 
 
