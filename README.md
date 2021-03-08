@@ -14,7 +14,29 @@
 если использовать [Pipenv](https://pipenv.pypa.io). Исполняемый файл находится в скрипте simple_audio_processor.py.
 
 ## Через Docker образ
-TODO
+Dockerfile написан с использованием легковестной init-системой [tini](https://github.com/krallin/tini).
+
+Сначала склоним репозиторий с проектом:
+```shell
+git clone https://github.com/madoka-wizard/jbr_mesh_practice_test_problem.git
+  && cd jbr_mesh_practice_test_problem
+```
+
+Теперь можно собрать Docker образ:
+```shell
+docker build -t simple_audio_processor .
+```
+
+Работать с ним очень просто: нужно примонтировать в `/data` директорию, в которой мы будем работать (где лежат файлы,
+которые мы хотим процессить) и сказать, чтобы Docker писал из образа файлы как текущий пользователь
+```shell
+docker run -v WORK_DIR:/data --user 1000:1000 simple_audio_processor ...
+```
+
+Пример команды, которая склеит файл a.mp3 с файлом b.mp3 в файл c.mp3, лежащие в /home/user/music:
+```shell
+docker run -v /home/user/music:/data --user 1000:1000 simple_audio_processor concat a.mp3 b.mp3 c.mp3
+```
 
 # Использование
 ```
