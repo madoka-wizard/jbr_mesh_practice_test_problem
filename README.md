@@ -26,7 +26,7 @@ Dockerfile написан с использованием легковестно
 
 Сначала склоним репозиторий с проектом:
 ```shell
-git clone https://github.com/madoka-wizard/jbr_mesh_practice_test_problem.git
+git clone https://github.com/madoka-wizard/jbr_mesh_practice_test_problem.git \
   && cd jbr_mesh_practice_test_problem
 ```
 
