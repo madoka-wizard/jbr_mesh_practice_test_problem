@@ -13,6 +13,14 @@
 [pydub](https://pydub.com) версии 0.25.0. Можно установить зависимости из requirements.txt или из Pipfile,
 если использовать [Pipenv](https://pipenv.pypa.io). Исполняемый файл находится в скрипте simple_audio_processor.py.
 
+**Важно**: работать с .wav файлами можно без каких-либо зависимостей, а если хочется иметь поддержку других расширений,
+то следует поставить [ffmpeg](https://www.ffmpeg.org/) или [libav](https://libav.org/):
+```shell
+apt-get install ffmpeg libavcodec-extra
+# или
+apt-get install libav-tools libavcodec-extra
+```
+
 ## Через Docker образ
 Dockerfile написан с использованием легковестной init-системой [tini](https://github.com/krallin/tini).
 
@@ -27,8 +35,8 @@ git clone https://github.com/madoka-wizard/jbr_mesh_practice_test_problem.git
 docker build -t simple_audio_processor .
 ```
 
-Работать с ним очень просто: нужно примонтировать в `/data` директорию, в которой мы будем работать (где лежат файлы,
-которые мы хотим процессить) и сказать, чтобы Docker писал из образа файлы как текущий пользователь
+Работать с ним очень просто. Нужно примонтировать в `/data` директорию, в которой мы будем работать (где лежат файлы,
+которые мы хотим процессить) и сказать, чтобы Docker писал из образа файлы как текущий пользователь:
 ```shell
 docker run -v WORK_DIR:/data --user 1000:1000 simple_audio_processor ...
 ```
