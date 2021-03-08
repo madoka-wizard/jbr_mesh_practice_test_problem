@@ -29,6 +29,8 @@ def execute(command, args):
 
 
 def main():
+    if os.environ.get('DOCKER_CONTAINER', False):
+        os.chdir('data')
     main_parser = MyParser(description='Primitive audio processing tool.', add_help=False)
     main_parser.add_argument('-h', '--help', action='help', help='Show this help message and exit.')
     commands_parser = main_parser.add_subparsers(dest='cmd', metavar="COMMAND", help='Description')

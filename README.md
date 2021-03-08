@@ -10,7 +10,8 @@
 # Установка
 ## Ручная установка
 В системе должен быть установлен интерпретатор Python 3.9. Для работы с аудио файлами приложение использует библиотеку
-[pydub](https://pydub.com) версии 0.25.0. Можно установить зависимости из requirements.txt или из Pipfile, если использовать [Pipenv](https://pipenv.pypa.io). Исполняемый файл находится в скрипте simple_audio_processor.py.
+[pydub](https://pydub.com) версии 0.25.0. Можно установить зависимости из requirements.txt или из Pipfile,
+если использовать [Pipenv](https://pipenv.pypa.io). Исполняемый файл находится в скрипте simple_audio_processor.py.
 
 ## Через Docker образ
 TODO
